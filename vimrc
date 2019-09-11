@@ -127,17 +127,12 @@ if filereadable(expand("~/.vimrc.local"))
   " set whichwrap+=<,>,h,l,[,] " Wrap arrow keys between lines
   "
   " autocmd! bufwritepost .vimrc source ~/.vimrc
-  " noremap! jj <ESC>
+  noremap! jj <ESC>
   source ~/.vimrc.local
 endif
 
-let g:user_emmet_leader_key=';'
-
 set term=xterm-256color
 :highlight LineNr term=bold cterm=NONE ctermfg=Brown
-
-nmap <S-Enter> O<Esc>
-nmap <CR> o<Esc>
 
 " let delimitMate_expand_cr = 1
 " let delimitMate_expand_space = 1
@@ -162,10 +157,7 @@ let g:user_emmet_settings = {
   \}
 
 " Vim Tabs
-map  <C-Y> :tabp<CR>
-map  <C-y> :tabn<CR>
 map  <C-t> :tabnew<CR>
 
-" Touch bar escape replacement
-inoremap jj <esc>
-inoremap ,j <esc>
+" Vue
+let g:vue_pre_processors = ['scss']
