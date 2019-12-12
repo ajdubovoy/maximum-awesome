@@ -33,9 +33,9 @@ set encoding=utf-8
 set expandtab                                                " expand tabs to spaces
 set ignorecase                                               " case-insensitive search
 set incsearch                                                " search as you type
-" set laststatus=2                                             " always show statusline
-" set list                                                     " show trailing whitespace
-" set listchars=tab:▸\ ,trail:▫
+set laststatus=2                                             " always show statusline
+set list                                                     " show trailing whitespace
+set listchars=tab:▸\ ,trail:•
 set number                                                   " show line numbers
 set ruler                                                    " show where you are
 set scrolloff=3                                              " show context above/below cursorline
@@ -96,12 +96,24 @@ autocmd BufRead,BufNewFile *.fdoc set filetype=yaml
 autocmd BufRead,BufNewFile *.md set filetype=markdown
 autocmd BufRead,BufNewFile *.md set spell
 " extra rails.vim help
-autocmd User Rails silent! Rnavcommand decorator      app/decorators            -glob=**/* -suffix=_decorator.rb
-autocmd User Rails silent! Rnavcommand observer       app/observers             -glob=**/* -suffix=_observer.rb
-autocmd User Rails silent! Rnavcommand feature        features                  -glob=**/* -suffix=.feature
-autocmd User Rails silent! Rnavcommand job            app/jobs                  -glob=**/* -suffix=_job.rb
-autocmd User Rails silent! Rnavcommand mediator       app/mediators             -glob=**/* -suffix=_mediator.rb
-autocmd User Rails silent! Rnavcommand stepdefinition features/step_definitions -glob=**/* -suffix=_steps.rb
+let g:rails_projections = {
+      \ "app/uploaders/*_uploader.rb": {
+      \   "command": "uploader",
+      \   "template":
+      \     ["class {camelcase|capitalize|colons}Uploader < "
+      \      . "CarrierWave::Uploader::Base", "end"],
+      \   "test": [
+      \     "test/unit/{}_uploader_test.rb",
+      \     "spec/models/{}_uploader_spec.rb"
+      \   ],
+      \   "rubyMacro": ["process", "version"]
+      \ },
+      \ "features/support/*.rb": {"command": "support"},
+      \ "features/support/env.rb": {"command": "support"},
+      \ "spec/factories/*_factory.rb": {"command": "factory"},
+      \ "app/jobs/*.rb": {"command": "job"}
+      \ }
+
 " automatically rebalance windows on vim resize
 autocmd VimResized * :wincmd =
 
@@ -127,29 +139,14 @@ if filereadable(expand("~/.vimrc.local"))
   " set whichwrap+=<,>,h,l,[,] " Wrap arrow keys between lines
   "
   " autocmd! bufwritepost .vimrc source ~/.vimrc
-  noremap! jj <ESC>
   source ~/.vimrc.local
 endif
 
+" Colors
 set term=xterm-256color
-:highlight LineNr term=bold cterm=NONE ctermfg=Brown
+:highlight LineNr ctermfg=DarkGrey
 
-" let delimitMate_expand_cr = 1
-" let delimitMate_expand_space = 1
-" imap <expr> <CR> <Plug>delimitMateCR
-
-let $JS_CMD='node'
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-let g:syntastic_always_populate_loc_list = 0
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_javascript_eslint_exe = 'npm run lint --'
-
-" React
+" Emmet
 let g:user_emmet_settings = {
   \  'javascript.jsx' : {
     \      'extends' : 'jsx',
@@ -160,4 +157,8 @@ let g:user_emmet_settings = {
 map  <C-t> :tabnew<CR>
 
 " Vue
-let g:vue_pre_processors = ['scss']
+let g:Emmet = 'detect_on_enter'
+
+" Syntastic
+let g:syntastic_ruby_checkers = ['rubocop', 'mri']
+let g:syntastic_javascript_checkers = ['eslint']
