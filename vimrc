@@ -157,7 +157,7 @@ let g:user_emmet_settings = {
 map  <C-t> :tabnew<CR>
 
 " Vue
-let g:Emmet = 'detect_on_enter'
+let g:vue_pre_processors = 'detect_on_enter'
 
 " Syntastic
 let g:syntastic_ruby_checkers = ['rubocop', 'mri']
