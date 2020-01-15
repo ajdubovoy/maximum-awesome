@@ -156,9 +156,6 @@ let g:user_emmet_settings = {
 " Vim Tabs
 map  <C-t> :tabnew<CR>
 
-" Vue
-let g:vue_pre_processors = 'detect_on_enter'
-
 " Syntastic
 let g:syntastic_ruby_checkers = ['rubocop', 'mri']
 let g:syntastic_javascript_checkers = ['eslint']
