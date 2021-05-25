@@ -10,19 +10,19 @@ source $ZPLUG_HOME/init.zsh
 source ~/.zplug/init.zsh
 zplug 'zplug/zplug', hook-build:'zplug --self-manage'
 zplug "plugins/git", from:oh-my-zsh
-zplug "plugins/gitfast", from:oh-my-zsh, lazy:true
-zplug "plugins/last-working-dir", from:oh-my-zsh, lazy:true
+zplug "plugins/gitfast", from:oh-my-zsh
+zplug "plugins/last-working-dir", from:oh-my-zsh
 zplug "plugins/common-aliases", from:oh-my-zsh
-zplug "plugins/sublime", from:oh-my-zsh, lazy:true
-zplug "plugins/zsh-syntax-highlighting", from:oh-my-zsh, lazy:true
+zplug "plugins/sublime", from:oh-my-zsh
+zplug "plugins/zsh-syntax-highlighting", from:oh-my-zsh
 zplug "plugins/history-substring-search", from:oh-my-zsh
-zplug "plugins/zsh-nvm", from:oh-my-zsh, lazy:true
-zplug "plugins/wd", from:oh-my-zsh, lazy:true, lazy:true
-zplug "plugins/tmux", from:oh-my-zsh, lazy:true, lazy:true
-zplug "plugins/colored-man-pages", from:oh-my-zsh, lazy:true, lazy:true
-zplug "plugins/npm", from:oh-my-zsh, lazy:true, lazy:true
-zplug "plugins/yarn", from:oh-my-zsh, lazy:true, lazy:true
-zplug "plugins/httpie", from:oh-my-zsh, lazy:true, lazy:true
+zplug "plugins/zsh-nvm", from:oh-my-zsh
+zplug "plugins/wd", from:oh-my-zsh
+zplug "plugins/tmux", from:oh-my-zsh
+zplug "plugins/colored-man-pages", from:oh-my-zsh
+zplug "plugins/npm", from:oh-my-zsh
+zplug "plugins/yarn", from:oh-my-zsh
+zplug "plugins/httpie", from:oh-my-zsh
 zplug "mafredri/zsh-async", from:"github"
 if ! zplug check; then
     printf "Install? [y/N]: "
