@@ -78,8 +78,8 @@ cnoremap w!! %!sudo tee > /dev/null %
 
 " plugin settings
 let g:ctrlp_match_window = 'order:ttb,max:20'
-let g:NERDSpaceDelims=1
-let g:gitgutter_enabled = 0
+let g:NERDSpaceDelims = 1
+let g:gitgutter_enabled = 1
 
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
@@ -151,6 +151,9 @@ endif
 " Emmet
 let g:user_emmet_settings = {
   \  'javascript.jsx' : {
+    \      'extends' : 'jsx',
+    \  },
+  \  'javascript.tsx' : {
     \      'extends' : 'jsx',
     \  },
   \}
@@ -343,3 +346,7 @@ function! DeleteFileSwaps()
     echo "Reset swap file extension for file: ".expand('%')
 endfunction
 command! DeleteFileSwaps :call DeleteFileSwaps()
+
+highlight clear SignColumn
+
+autocmd FileType html,css,scss,hml,haml,vue,slim,erb,jsx set iskeyword=@,48-57,_,-,?,!,192-255
