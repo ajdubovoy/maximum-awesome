@@ -3,6 +3,7 @@ ZSH=$HOME/.oh-my-zsh
 # You can change the theme with another one:
 #   https://github.com/robbyrussell/oh-my-zsh/wiki/themes
 ZSH_THEME="robbyrussell"
+plugins=(zsh-syntax-highlighting)
 
 # ZPlug
 export ZPLUG_HOME=/usr/local/opt/zplug
@@ -14,7 +15,6 @@ zplug "plugins/gitfast", from:oh-my-zsh
 zplug "plugins/last-working-dir", from:oh-my-zsh
 zplug "plugins/common-aliases", from:oh-my-zsh
 zplug "plugins/sublime", from:oh-my-zsh
-zplug "plugins/zsh-syntax-highlighting", from:oh-my-zsh
 zplug "plugins/history-substring-search", from:oh-my-zsh
 zplug "plugins/zsh-nvm", from:oh-my-zsh
 zplug "plugins/wd", from:oh-my-zsh
